@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as InventoryRouteImport } from './routes/inventory'
+import { Route as KitchenRouteImport } from './routes/kitchen'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MenuRouteImport } from './routes/menu'
 import { Route as OrdersRouteImport } from './routes/orders'
@@ -34,6 +35,11 @@ const AlertsRoute = AlertsRouteImport.update({
 const InventoryRoute = InventoryRouteImport.update({
   id: '/inventory',
   path: '/inventory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KitchenRoute = KitchenRouteImport.update({
+  id: '/kitchen',
+  path: '/kitchen',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -81,6 +87,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
   '/inventory': typeof InventoryRoute
+  '/kitchen': typeof KitchenRoute
   '/login': typeof LoginRoute
   '/menu': typeof MenuRoute
   '/orders': typeof OrdersRoute
@@ -94,6 +101,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
   '/inventory': typeof InventoryRoute
+  '/kitchen': typeof KitchenRoute
   '/login': typeof LoginRoute
   '/menu': typeof MenuRoute
   '/orders': typeof OrdersRoute
@@ -108,6 +116,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
   '/inventory': typeof InventoryRoute
+  '/kitchen': typeof KitchenRoute
   '/login': typeof LoginRoute
   '/menu': typeof MenuRoute
   '/orders': typeof OrdersRoute
@@ -123,6 +132,7 @@ export interface FileRouteTypes {
     | '/'
     | '/alerts'
     | '/inventory'
+    | '/kitchen'
     | '/login'
     | '/menu'
     | '/orders'
@@ -136,6 +146,7 @@ export interface FileRouteTypes {
     | '/'
     | '/alerts'
     | '/inventory'
+    | '/kitchen'
     | '/login'
     | '/menu'
     | '/orders'
@@ -149,6 +160,7 @@ export interface FileRouteTypes {
     | '/'
     | '/alerts'
     | '/inventory'
+    | '/kitchen'
     | '/login'
     | '/menu'
     | '/orders'
@@ -163,6 +175,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AlertsRoute: typeof AlertsRoute
   InventoryRoute: typeof InventoryRoute
+  KitchenRoute: typeof KitchenRoute
   LoginRoute: typeof LoginRoute
   MenuRoute: typeof MenuRoute
   OrdersRoute: typeof OrdersRoute
@@ -194,6 +207,13 @@ declare module '@tanstack/react-router' {
       path: '/inventory'
       fullPath: '/inventory'
       preLoaderRoute: typeof InventoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kitchen': {
+      id: '/kitchen'
+      path: '/kitchen'
+      fullPath: '/kitchen'
+      preLoaderRoute: typeof KitchenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -259,6 +279,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlertsRoute: AlertsRoute,
   InventoryRoute: InventoryRoute,
+  KitchenRoute: KitchenRoute,
   LoginRoute: LoginRoute,
   MenuRoute: MenuRoute,
   OrdersRoute: OrdersRoute,
