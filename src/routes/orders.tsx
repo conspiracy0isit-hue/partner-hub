@@ -35,19 +35,19 @@ export const Route = createFileRoute("/orders")({
 
 function LiveOrders() {
   const [orders, setOrders] = useState<Order[]>(seedOrders);
-  const [selectedId, setSelectedId] = useState(seedOrders[0].id);
+  const [selectedId, setSelectedId] = useState(seedOrders[0]!.id);
   const [autoAccept, setAutoAccept] = useState(true);
   const [autoCap, setAutoCap] = useState(600);
   const [sound, setSound] = useState(true);
   const [cancelling, setCancelling] = useState<string | null>(null);
 
-  const selected = orders.find((o) => o.id === selectedId) ?? orders[0];
+  const selected = orders.find((o) => o.id === selectedId) ?? orders[0]!;
 
   const update = (id: string, patch: Partial<Order>) =>
     setOrders((prev) => prev.map((o) => (o.id === id ? { ...o, ...patch } : o)));
 
   const advance = (o: Order) => {
-    const next = stateFlow[Math.min(stateFlow.indexOf(o.state) + 1, stateFlow.length - 1)];
+    const next = stateFlow[Math.min(stateFlow.indexOf(o.state) + 1, stateFlow.length - 1)];!
     update(o.id, { state: next });
     toast.success(`${o.code} → ${stateLabel[next]}`);
   };
