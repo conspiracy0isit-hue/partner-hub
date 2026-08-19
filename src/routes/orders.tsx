@@ -47,8 +47,7 @@ function LiveOrders() {
     setOrders((prev) => prev.map((o) => (o.id === id ? { ...o, ...patch } : o)));
 
   const advance = (o: Order) => {
-    const next = stateFlow[Math.min(stateFlow.indexOf(o.state) + 1, stateFlow.length - 1)];
-!
+    const next = stateFlow[Math.min(stateFlow.indexOf(o.state) + 1, stateFlow.length - 1)]!;
     update(o.id, { state: next });
     toast.success(`${o.code} → ${stateLabel[next]}`);
   };
