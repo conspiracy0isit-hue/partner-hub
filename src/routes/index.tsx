@@ -38,7 +38,7 @@ function Overview() {
           <p className="num mt-3 text-6xl font-bold text-primary">{inr(lost)}</p>
           <p className="mt-2 max-w-xl text-sm text-muted-foreground">
             Money left on the table by rejected orders, offline hours, snoozed bestsellers and slow
-            prep. Fixing the top two recovers about {inr(lostRevenue[0].amount + lostRevenue[1].amount)}.
+            prep. Fixing the top two recovers about {inr(lostRevenue[0]!.amount + lostRevenue[1]!.amount)}.
           </p>
           <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
             {lostRevenue.map((l) => (
