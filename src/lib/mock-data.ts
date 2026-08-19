@@ -263,3 +263,64 @@ export const opsScore = [
   { metric: "Order accuracy", value: 94, target: 97, percentile: 63 },
   { metric: "Item availability", value: 88, target: 95, percentile: 52 },
 ];
+
+export const commissionOrders = [
+  { code: "#A4801", gross: 740, commissionPct: 22, taxes: 37, riderFee: 0, ads: 12 },
+  { code: "#A4796", gross: 415, commissionPct: 22, taxes: 21, riderFee: 25, ads: 0 },
+  { code: "#A4790", gross: 1290, commissionPct: 18, taxes: 64, riderFee: 0, ads: 34 },
+  { code: "#A4783", gross: 560, commissionPct: 22, taxes: 28, riderFee: 25, ads: 0 },
+  { code: "#A4771", gross: 980, commissionPct: 18, taxes: 49, riderFee: 0, ads: 21 },
+];
+
+export const deductions = [
+  { id: "d1", label: "Customer refund — missing item", order: "#A4712", amount: 340, liable: "Restaurant", disputable: true },
+  { id: "d2", label: "Rider wait penalty (>9 min)", order: "#A4699", amount: 120, liable: "Restaurant", disputable: true },
+  { id: "d3", label: "Ads spend — Sponsored search", order: "Campaign", amount: 2400, liable: "Restaurant", disputable: false },
+  { id: "d4", label: "Packaging quality claim", order: "#A4655", amount: 260, liable: "Platform", disputable: false },
+];
+
+export const payoutHistory = [
+  { cycle: "04–10 Aug", net: 251_400, status: "Paid" },
+  { cycle: "28 Jul–03 Aug", net: 238_900, status: "Paid" },
+  { cycle: "21–27 Jul", net: 264_180, status: "Paid" },
+];
+
+export const ratingTrend = [
+  { week: "W27", rating: 4.1 },
+  { week: "W28", rating: 4.2 },
+  { week: "W29", rating: 4.0 },
+  { week: "W30", rating: 4.3 },
+  { week: "W31", rating: 4.4 },
+  { week: "W32", rating: 4.2 },
+];
+
+export const itemRatings = [
+  { item: "Hyderabadi Chicken Biryani", rating: 4.6, count: 812 },
+  { item: "Paneer Butter Masala", rating: 4.3, count: 402 },
+  { item: "Veg Biryani", rating: 3.6, count: 231 },
+  { item: "Paneer Tikka", rating: 4.1, count: 188 },
+];
+
+export const complaints = [
+  { id: "c1", type: "Missing item", order: "#A4712", detail: "Raita not packed", photo: true, status: "Open" },
+  { id: "c2", type: "Spillage", order: "#A4688", detail: "Gravy leaked in bag", photo: true, status: "Resolved" },
+  { id: "c3", type: "Wrong item", order: "#A4640", detail: "Veg biryani instead of chicken", photo: false, status: "Open" },
+];
+
+export const storeHours = [
+  { day: "Monday", open: "11:00", close: "23:00", closed: false },
+  { day: "Tuesday", open: "11:00", close: "23:00", closed: false },
+  { day: "Wednesday", open: "11:00", close: "23:00", closed: false },
+  { day: "Thursday", open: "11:00", close: "23:00", closed: false },
+  { day: "Friday", open: "11:00", close: "00:00", closed: false },
+  { day: "Saturday", open: "10:00", close: "00:00", closed: false },
+  { day: "Sunday", open: "10:00", close: "23:00", closed: false },
+];
+
+export const kycDocs = [
+  { name: "FSSAI licence", value: "11223344556677", status: "Verified", expiry: "12 Mar 2027" },
+  { name: "GST number", value: "29ABCDE1234F1Z5", status: "Verified", expiry: "—" },
+  { name: "PAN", value: "ABCDE1234F", status: "Verified", expiry: "—" },
+  { name: "Bank account", value: "HDFC ••••4821", status: "Verified", expiry: "—" },
+  { name: "Shop & establishment", value: "SE/BLR/2024/8891", status: "Expiring", expiry: "30 Sep 2026" },
+];
