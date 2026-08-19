@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as MenuRouteImport } from './routes/menu'
 import { Route as OrdersRouteImport } from './routes/orders'
+import { Route as PayoutsRouteImport } from './routes/payouts'
 import { Route as PromotionsRouteImport } from './routes/promotions'
 import { Route as RevenueRouteImport } from './routes/revenue'
 
@@ -30,6 +31,11 @@ const OrdersRoute = OrdersRouteImport.update({
   path: '/orders',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PayoutsRoute = PayoutsRouteImport.update({
+  id: '/payouts',
+  path: '/payouts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PromotionsRoute = PromotionsRouteImport.update({
   id: '/promotions',
   path: '/promotions',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/menu': typeof MenuRoute
   '/orders': typeof OrdersRoute
+  '/payouts': typeof PayoutsRoute
   '/promotions': typeof PromotionsRoute
   '/revenue': typeof RevenueRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/menu': typeof MenuRoute
   '/orders': typeof OrdersRoute
+  '/payouts': typeof PayoutsRoute
   '/promotions': typeof PromotionsRoute
   '/revenue': typeof RevenueRoute
 }
@@ -60,21 +68,30 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/menu': typeof MenuRoute
   '/orders': typeof OrdersRoute
+  '/payouts': typeof PayoutsRoute
   '/promotions': typeof PromotionsRoute
   '/revenue': typeof RevenueRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/menu' | '/orders' | '/promotions' | '/revenue'
+  fullPaths: '/' | '/menu' | '/orders' | '/payouts' | '/promotions' | '/revenue'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/menu' | '/orders' | '/promotions' | '/revenue'
-  id: '__root__' | '/' | '/menu' | '/orders' | '/promotions' | '/revenue'
+  to: '/' | '/menu' | '/orders' | '/payouts' | '/promotions' | '/revenue'
+  id:
+    | '__root__'
+    | '/'
+    | '/menu'
+    | '/orders'
+    | '/payouts'
+    | '/promotions'
+    | '/revenue'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   MenuRoute: typeof MenuRoute
   OrdersRoute: typeof OrdersRoute
+  PayoutsRoute: typeof PayoutsRoute
   PromotionsRoute: typeof PromotionsRoute
   RevenueRoute: typeof RevenueRoute
 }
@@ -102,6 +119,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OrdersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/payouts': {
+      id: '/payouts'
+      path: '/payouts'
+      fullPath: '/payouts'
+      preLoaderRoute: typeof PayoutsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/promotions': {
       id: '/promotions'
       path: '/promotions'
@@ -123,6 +147,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   MenuRoute: MenuRoute,
   OrdersRoute: OrdersRoute,
+  PayoutsRoute: PayoutsRoute,
   PromotionsRoute: PromotionsRoute,
   RevenueRoute: RevenueRoute,
 }
